@@ -1,0 +1,105 @@
+@import "../abstracts/variables";
+@import "../vendors/material";
+
+$search-box-gap: 10px;
+$width: 100%;
+$height: 30px;
+$search-box-tab-height: 10px;
+$search-box-input-width: 100%;
+
+$color-bg-muted: whitesmoke;
+
+$tablet: 1024px;
+$mobile: 768px;
+
+
+::ng-deep .mat-mdc-dialog-surface {
+  overflow-y: hidden!important;
+}
+:host .mat-mdc-dialog-surface {
+  overflow-y: hidden!important;
+}
+
+
+::ng-deep {
+  .mat-dialog-container {
+    padding: 0!important;
+    overflow-y: hidden;
+  }
+
+  .mat-mdc-dialog-surface {
+    overflow-y: hidden!important;
+  }
+}
+
+.search-box {
+  width: 100%;
+  direction: rtl;
+  position: relative;
+
+  &__header {
+    width: $width !important;
+    min-height: $height;
+    height: $search-box-tab-height;
+    background: $search-box-bg;
+    box-sizing: border-box;
+    margin: 0 auto;
+    margin-bottom: 5px;
+
+    &--input {
+      width: $search-box-input-width;
+      margin-left: 3px;
+    }
+
+    &--close {
+      top: -8px;
+      left: -3px;
+      color: darkred;
+      position: absolute;
+    }
+  }
+
+  &__input {
+    width: $search-box-input-width;
+    margin-bottom: -19px;
+
+    &--top {
+    }
+  }
+
+  &__top {
+    margin-top: 0!important;
+    gap: $search-box-gap;
+  }
+
+  &__bottom {
+    margin-top: -22px !important;
+    gap: $search-box-gap;
+  }
+}
+
+.search-bar {
+  margin-top: 10px;
+  margin-bottom: -10px;
+}
+
+@media (max-width: $tablet) {
+  html, body {
+    width: auto !important;
+    min-width: 1024px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+  }
+  .container {
+    min-width: 1024px !important;
+  }
+}
+@media (max-width: $mobile) {
+  html, body {
+    min-width: 768px !important;
+  }
+  .container {
+    min-width: 768px !important;
+  }
+}
+

@@ -1,0 +1,7 @@
+@mixin SearchBar {
+  background: $search-box-bg-main;
+  width: $page-width-percent;
+  border: none;
+  z-index: 1;
+  color: $color-white;
+}

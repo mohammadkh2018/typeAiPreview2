@@ -1,0 +1,47 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+
+/* header */
+.headerBoxShadow {
+    -webkit-box-shadow: 0px 2px 4px 0px rgba(59, 59, 59, 1);
+    -moz-box-shadow: 0px 2px 4px 0px rgba(59, 59, 59, 1);
+    box-shadow: 0px 2px 4px 0px rgba(59, 59, 59, 1);
+}
+
+.MySearchBar {
+  background: $search-box-bg-main;
+  height: 45px;
+}
+
+.submit {
+  background-color: $add-bg!important;
+  color: $color-white!important;
+  width: 35px;
+  height: 35px;
+  margin-left: 5px!important;
+}
+
+/* form */
+.mainPanel {
+    width: 80%;
+    margin-top: 6%;
+}
+
+/* checkbox */
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+.mat-accent .mat-pseudo-checkbox-checked,
+.mat-accent .mat-pseudo-checkbox-indeterminate,
+.mat-pseudo-checkbox-checked,
+.mat-pseudo-checkbox-indeterminate {
+    background-color: green !important;
+}
+
+:host {
+  ::ng-deep {
+    .mat-form-field-label {
+      font-weight: lighter !important;
+      color: #a7a7a7 !important;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+<div *ngIf="loadIs" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card fxFlex.lg="40" fxFlex.xs="100" fxFlex="90" [dir]="objectJson.page_dir">
+    <mat-card-header>
+      <mat-card-title style="color: #337ab7;">{{objectJson.title}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content *ngIf="isVerify" fxLayout="column">
+      <mat-form-field>
+        <input required="true" maxLength="100"
+               [(ngModel)]="clientD"
+               matInput [placeholder]="objectJson.inputCode"
+               autocomplete="off"
+        >
+
+      </mat-form-field>
+      <button mat-raised-button (click)="onSubmit()"
+              style="background-color: #337ab7; color: #fff">{{objectJson.Confirmation}}</button>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button *ngIf="digitCheckis.email && !isShowSendBtn" (click)="onResent('email')" mat-raised-button
+              style="background-color: #337ab7; color: #fff">{{objectJson.sendEmail}}</button>
+      <button *ngIf="digitCheckis.sms && !isShowSendBtn" (click)="onResent('sms')" mat-raised-button
+              style="background-color: #337ab7; color: #fff">{{objectJson.sendSms}}</button>
+      <button *ngIf="isVerify" (click)="onShowSendBtn()" mat-raised-button
+              style="background-color: #337ab7; color: #fff">{{objectJson.returnBtn}}</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

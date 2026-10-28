@@ -1,0 +1,143 @@
+<div class="custom-grid__container"
+     [style.height.px]="heightContainer">
+  <div
+    *ngIf="gridJson?.title && gridJson?.title?.text"
+    class="custom-grid__title"
+    [ngStyle]="{
+      color: gridJson.title?.font?.color,
+      fontSize: gridJson.title?.font?.size + 'px',
+      fontWeight: gridJson.title?.font?.bold ? 'bold' : 'normal',
+      fontStyle: gridJson.title?.font?.italic ? 'italic' : 'normal',
+      fontFamily: gridJson.title?.font?.name,
+      height: gridJson.title?.height + 'px'}">
+    {{ gridJson.title?.text }}
+  </div>
+
+  <div
+    [class]="otherGridStyle ? 'custom-grid__table-container-show' : 'custom-grid__table-container'"
+    [ngStyle]="{ direction: gridJson.direction }"
+    (scroll)="onScroll($event)">
+
+    <table
+      [class]="otherGridStyle ? 'custom-grid__table-show' : 'custom-grid__table'"
+      *ngIf="loadIs"
+      [style.height.px]="heightGrid">
+
+      <thead [style.background-color]="gridJson.headerColor">
+      <tr *ngIf="gridJson.columnsTitleShow">
+        <th
+          *ngIf="gridJson.multiSelection"
+          class="custom-grid__checkbox-col">
+          <mat-checkbox
+            (change)="toggleAllSelection($event)"
+            [ngStyle]="checkboxStyleAll(gridJson.direction)"
+            matTooltip="انتخاب همه">
+          </mat-checkbox>
+        </th>
+        <th
+          *ngFor="let col of gridJson.columns"
+          class="custom-grid__header-cell"
+          [ngStyle]="getParentStyleFieldHeader(col)"
+          [style.cursor]="col.sort ? 'pointer' : 'context-menu'"
+          [style.textAlign]="col.titleAlign"
+          [hidden]="col.hide"
+          (click)="sortData(col)">
+            <span class="custom-grid__header-content">
+              <mat-icon
+                *ngIf="col.sort"
+                style="position: absolute; top: 5px;"
+                [style.right]="(col.direction === 'rtl' || (!col.direction && gridJson.direction !== 'ltr')) ? '0' : null"
+                [style.left]="(col.direction === 'ltr' || (!col.direction && gridJson.direction === 'ltr')) ? '0' : null">
+                {{ col.sortDirection === 'asc' ? 'arrow_upward' : col.sortDirection === 'desc' ? 'arrow_downward' : 'sort' }}
+              </mat-icon>
+              <span [ngStyle]="getMarginStyle(col)">
+                {{ col.title }}
+              </span>
+            </span>
+        </th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr
+        *ngFor="let row of gridJson.data; let i = index"
+        (click)="selectRow(row)"
+        [style.direction]="row.direction || gridJson.direction"
+        [style.background-color]="isSelectedRow(row, i) || (i % 2 === 0 ? 'white' : 'whitesmoke')"
+        class="custom-grid__row">
+        <td
+          *ngIf="gridJson.multiSelection">
+          <mat-checkbox
+            [(ngModel)]="row.selected"
+            [ngStyle]="checkboxStyle(gridJson.direction)"
+            (change)="onSelectionChange()">
+          </mat-checkbox>
+        </td>
+        <td
+          *ngFor="let col of gridJson.columns"
+          [style.width]="col.width"
+          [style.textAlign]="col.align"
+          [hidden]="col.hide"
+          (click)="selectField(col)"
+          [style.background-color]="isSelectedField(row, col)"
+          [style.text-align]="col.titleAlign"
+          [class.custom-grid__cell--single-line]="col.multiLine === false">
+
+          <ng-container *ngIf="col.buttons; else showData">
+            <ng-container *ngFor="let btn of col.buttons">
+              <button
+                mat-icon-button
+                *ngIf="btn.icon !== 'button'"
+                (click)="onButtonClick(btn, row)"
+                [disabled]="btn.hasOwnProperty('status') ? !btn.status : false"
+                [class]="btn.hasOwnProperty('status') && !btn.status ? 'colorFull' : ''"
+                matTooltipPosition="below"
+                [matTooltip]="btn.tooltip">
+                <mat-icon [style.color]="btn.color">{{ btn.icon }}</mat-icon>
+              </button>
+              <button
+                mat-raised-button
+                *ngIf="btn.icon === 'button' && showButton(btn, row)"
+                (click)="onButtonClick(btn, row, $event)"
+                [style.background]="btn.color"
+                [disabled]="(gridJson!.useActionResolve && isLoading(row, btn)) || (btn.hasOwnProperty('status') ? !btn.status : false)"
+                [class]="btn.hasOwnProperty('status') && !btn.status ? 'colorFull' : ''"
+                style="
+                        color: white;
+                        height: 28px;
+                        border-radius: 7px;
+                        padding: 0 6px;
+                        margin: 2px;
+                        align-items: center;
+                        gap: 6px;
+                        line-height: normal;
+                        overflow: hidden;
+                      "
+              >
+                <ng-container *ngIf="gridJson?.useActionResolve && isLoading(row, btn); else btnLabel">
+                  <mat-progress-spinner
+                    mode="indeterminate"
+                    [diameter]="18"
+                    [strokeWidth]="4"
+                    class="btn-inline-spinner"
+                    [style.--mdc-circular-progress-active-indicator-color]="'white'">
+                  </mat-progress-spinner>
+                </ng-container>
+                <ng-template #btnLabel>
+                  {{ btn.tooltip }}
+                </ng-template>
+              </button>
+            </ng-container>
+          </ng-container>
+
+          <ng-template #showData>
+            <div [ngStyle]="getParentStyleField(col)">
+              {{ row[col.fieldName] }}
+            </div>
+          </ng-template>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

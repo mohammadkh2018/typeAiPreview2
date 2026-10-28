@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  color: #efefef;
+}
+.MyContainer
+{
+  text-align: center;
+  width: 350px;
+  margin: 30px auto;
+  border: 1px solid #e7e7e7;
+  padding: 10px; -webkit-box-shadow: 10px 9px 6px -8px rgba(0,0,0,0.42);
+  -moz-box-shadow: 10px 9px 6px -8px rgba(0,0,0,0.42);
+  box-shadow: 10px 9px 6px -8px rgba(0,0,0,0.42);
+}

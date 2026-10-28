@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "typeAiPreview": {
+    "typeAI": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -15,47 +15,76 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/type-ai-preview",
+            "baseHref": "/Hermes_Web/automation/typeAIPreview/",
+            "deployUrl": "/Hermes_Web/automation/typeAIPreview/",
+            "outputPath": "dist/type-ai",
             "index": "src/index.html",
-            "browser": "src/main.ts",
+            "main": "src/main.ts",
+            "optimization": {
+              "fonts": {
+                "inline": false
+              }
+            },
             "polyfills": [
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              "src/favicon.ico",
+              "src/assets",
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "node_modules/@fortawesome/fontawesome-free/webfonts",
+                "output": "/webfonts"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets/assign-order",
+                "output": "/assets/assign-order"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/ngx-extended-pdf-viewer/assets/",
+                "output": "/assets/"
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
             ],
             "scripts": []
           },
           "configurations": {
             "production": {
+              "baseHref": "/Hermes_Web/automation/typeAIPreview/",
+              "deployUrl": "/Hermes_Web/automation/typeAIPreview/",
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "40MB",
+                  "maximumError": "40MB"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kB",
-                  "maximumError": "4kB"
+                  "maximumWarning": "40MB",
+                  "maximumError": "40MB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "buildOptimizer": true,
+              "optimization": true,
+              "vendorChunk": false,
+              "namedChunks": true
             },
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "vendorChunk": true,
+              "namedChunks": false
             }
           },
           "defaultConfiguration": "production"
@@ -64,10 +93,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "typeAiPreview:build:production"
+              "buildTarget": "typeAI:build:production"
             },
             "development": {
-              "buildTarget": "typeAiPreview:build:development"
+              "buildTarget": "typeAI:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -85,13 +114,22 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              "src/favicon.ico",
+              "src/assets",
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "node_modules/@fortawesome/fontawesome-free/webfonts",
+                "output": "/webfonts"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/ngx-extended-pdf-viewer/assets/",
+                "output": "/assets/"
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
             ],
             "scripts": []
           }

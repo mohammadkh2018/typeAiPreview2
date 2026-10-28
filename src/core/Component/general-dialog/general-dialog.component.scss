@@ -1,0 +1,65 @@
+::ng-deep .mat-dialog-container {
+  padding: 0!important;
+  overflow-y: hidden!important;
+}
+:host ::ng-deep .mat-dialog-container {
+  overflow-y: hidden!important;
+}
+
+:host ::ng-deep .mat-dialog-container .mdc-dialog_surface {
+  overflow-y: hidden!important;
+}
+:host ::ng-deep .mat-dialog-container , :host ::ng-deep .mdc-dialog_surface {
+  overflow-y: hidden!important;
+}
+
+:host ::ng-deep .mat-mdc-dialog-surface mdc-dialog__surface {
+  overflow-y: hidden!important;
+}
+
+:host ::ng-deep .mat-mdc-dialog-surface .mdc-dialog__surface {
+  overflow-y: hidden!important;
+}
+
+
+:host ::ng-deep .mat-dialog-surface .mdc-dialog_surface {
+  overflow-y: hidden!important;
+}
+
+.mat-dialog-surface .mdc-dialog_surface {
+  overflow-y: hidden!important;
+}
+
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  overflow-y: hidden;
+}
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  overflow-y: hidden!important;
+}
+:host ::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+  overflow-y: hidden;
+}
+:host ::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+  overflow-y: hidden!important;
+}
+.mat-dialog-container .mdc-dialog_surface {
+  overflow-y: hidden!important;
+}
+
+:host ::ng-deep .mat-dialog-container .mdc-dialog_surface {
+  overflow-y: hidden!important;
+}
+
+:host ::ng-deep .mat-dialog-container {
+  border-radius: 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.custom-dialog-container {
+  .mat-dialog-container {
+    border-radius: 0 !important;
+    padding: 0 !important;
+    overflow: hidden;
+  }
+}

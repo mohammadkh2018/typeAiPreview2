@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 'Yekan';
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: 'Yekan', Arial, sans-serif;
+  font-size: 15px;
+}
+
+html, body {
+  overscroll-behavior-y: contain;
+  margin: 0;
+  padding: 0;
+  height: auto;
+}
+
+.container {
+  height: 100vh;
+  overflow: hidden !important;
+}
+
+.mic-pulse {
+  box-shadow: 0 0 0 0 rgba(172, 7, 45, 0.7);
+  animation: pulse-red 1s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+@keyframes pulse-red {
+  0% {
+    box-shadow: 0 0 0 0 rgba(172, 7, 45, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(172, 7, 45, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(172, 7, 45, 0);
+  }
+}
+
+.mat-datepicker-toggle, .mat-datepicker-content .mat-calendar-next-button, .mat-datepicker-content .mat-calendar-previous-button {
+  position: relative;
+  top: 5px;
+}

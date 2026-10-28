@@ -1,1 +1,90 @@
-/* You can add global styles to this file, and also import other style files */
+// /* You can add global styles to this file, and also import other style files */
+// @use '@angular/material' as mat;
+ 
+// @include mat.core();
+ 
+// $typeAI-theme: mat.define-theme((
+//   color: (
+//     theme-type: light,
+//     primary: mat.$azure-palette,
+//     tertiary: mat.$blue-palette,
+//   ),
+//   density: (
+//     scale: 0,
+//   )
+// ));
+ 
+// :root {
+//   @include mat.all-component-themes($typeAI-theme);
+// }
+// ::ng-deep {
+// #viewer .pdfViewer {
+//     background-color: white !important;
+// }
+// }
+
+@use '@angular/material' as mat;
+ 
+@include mat.core();
+ 
+$typeAI-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$azure-palette,
+    tertiary: mat.$blue-palette,
+  ),
+  density: (
+    scale: 0,
+  )
+));
+ 
+:root {
+  @include mat.all-component-themes($typeAI-theme);
+}
+
+
+
+// Snackbar - Success
+.cdk-overlay-pane
+.mat-mdc-snack-bar-container.notif-success
+.mdc-snackbar__surface {
+  background-color: #2e7d32 !important;
+  color: #fff !important;
+  font-family: IRANSans, Tahoma, sans-serif !important;
+}
+ 
+// Snackbar - Error
+.cdk-overlay-pane
+.mat-mdc-snack-bar-container.notif-error
+.mdc-snackbar__surface {
+  background-color: #ca3510 !important;
+  color: #fff !important;
+  font-family: IRANSans, Tahoma, sans-serif !important;
+}
+ 
+// Snackbar - Warning
+.notif-warning {
+  &.mat-mdc-snack-bar-container {
+    --mdc-snackbar-container-color: #ceb631;
+    --mdc-snackbar-supporting-text-font: IRANSans, Tahoma, sans-serif !important;
+    --mdc-snackbar-supporting-text-color: white;
+  }
+}
+ 
+// Snackbar - Helper
+.notif-helper {
+  &.mat-mdc-snack-bar-container {
+    --mdc-snackbar-container-color: #217da1;
+    --mdc-snackbar-supporting-text-font: IRANSans, Tahoma, sans-serif !important;
+    --mdc-snackbar-supporting-text-color: white;
+  }
+}
+
+
+.pdf-container {
+  width: 40%;
+  height: 100vh;
+  background: white;
+  margin: 0 auto;
+}
+

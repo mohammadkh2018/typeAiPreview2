@@ -1,0 +1,507 @@
+@import "../abstracts/variables";
+
+:host {
+  ::ng-deep {
+    .mat-mdc-tab-header {
+      min-height: 23px !important;
+      height: 36px !important;
+      right: 20px;
+      display: ruby!important;
+    }
+
+    .mat-mdc-tab-group {
+      --mdc-tab-height: 32px;
+    }
+
+    .mat-mdc-tab-body {
+      width: 100% !important;
+    }
+
+    .mat-mdc-tab {
+      min-height: 20px !important;
+      height: 32px !important;
+      padding: 0 8px !important;
+      background-color: #c9def3;
+      border: 1px solid #a0bfed;
+      border-radius: 6px 6px 0 0;
+      margin: 7px 2px 0 2px;
+    }
+
+    .mat-mdc-tab-label-container {
+      width: 100% !important;
+    }
+
+    .mat-mdc-tab-label,
+    .mat-mdc-tab-label-active {
+      padding: 7px !important;
+      margin: 7px !important;
+    }
+
+    .mat-mdc-tab-label {
+      min-width: 5px !important;
+      margin-left: -7px !important;
+      color: #343434 !important;
+      background: transparent !important;
+      position: relative;
+      z-index: 1;
+
+      &:not(.mat-mdc-tab-label-active):hover::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: #aac7ff;
+        border-radius: 10px;
+        z-index: -1;
+        box-shadow: inset 0 0 0 5px white;
+      }
+
+      &.mat-mdc-tab-label-active {
+        position: relative;
+        z-index: 2;
+        background: $search-box-bg !important;
+        color: #001c87 !important;
+        border-radius: 22px 22px 0 0 !important;
+
+        + .mat-mdc-tab-label::after {
+          content: '';
+          position: absolute;
+          right: -11px;
+          bottom: -7px;
+          top: 15px;
+          width: 32px;
+          height: 23px;
+          background: $search-box-bg;
+          z-index: 12 !important;
+          clip-path: path('M22 2 L22 18 L2 18 C2 18 22 13 21 2 Z');
+        }
+      }
+
+      &:has(+ .mat-mdc-tab-label.mat-mdc-tab-label-active):not(:hover)::before {
+        content: '';
+        position: absolute;
+        left: -3px;
+        bottom: -7px;
+        top: 14px;
+        width: 33px;
+        height: 23px;
+        background: $search-box-bg;
+        z-index: 12 !important;
+        clip-path: path('M2 18 L22 18 C22 18 2 18 2 2 Z') !important;
+      }
+
+      &:hover:not(.mat-mdc-tab-label-active):has(+ .mat-mdc-tab-label.mat-mdc-tab-label-active)::after {
+        //display: none;
+      }
+
+      &:hover:not(.mat-mdc-tab-label-active):has(.mat-mdc-tab-label-active + &)::before {
+        display: none;
+      }
+
+      .mat-mdc-ripple-element {
+        background: transparent;
+      }
+    }
+
+    .mat-mdc-tab-label-content {
+      padding: 0 10px !important;
+    }
+
+    .mat-mdc-tab-labels {
+      width: 100px!important;
+      top: 0;
+      margin-right: 15px;
+    }
+
+    .mat-mdc-tab-list .mat-mdc-tab-labels .mat-mdc-tab-label-active {
+      background-color: #3e6992 !important;
+      color: #001c87 !important;
+      border-radius: 8px 8px 0 0 !important;
+      padding-left: 10px;
+    }
+
+    .mat-mdc-tab-group.mat-primary .mat-mdc-ink-bar,
+    .mat-mdc-tab-nav-bar.mat-primary .mat-mdc-ink-bar {
+      background: none !important;
+    }
+
+    .mat-mdc-tab-body-content {
+      overflow-x: hidden !important;
+    }
+
+    .mat-mdc-select,
+    .mat-mdc-option,
+    .mat-mdc-select-trigger {
+      font-family: 'yekan', sans-serif !important;
+    }
+
+    .mat-mdc-select-arrow {
+      margin-top: -6px;
+    }
+
+    .mat-mdc-select-panel .mat-mdc-option {
+      font-family: 'Yekan', sans-serif !important;
+    }
+    .mat-mdc-option {
+      font-family: 'Yekan' !important;
+    }
+
+    .mat-mdc-option .mdc-list-item {
+      font-family: 'Yekan' !important;
+    }
+    .mdc-list-item__primary-text {
+      font-family: 'Yekan' !important;
+    }
+
+    .mat-mdc-checkbox {
+      white-space: nowrap!important;
+    }
+
+    .mat-mdc-checkbox-checked.mat-accent .mat-mdc-checkbox-background,
+    .mat-mdc-checkbox-indeterminate.mat-mdc-accent .mat-mdc-checkbox-background,
+    .mat-mdc-accent .mat-mdc-pseudo-checkbox-checked,
+    .mat-mdc-accent .mat-mdc-pseudo-checkbox-indeterminate,
+    .mat-mdc-pseudo-checkbox-checked,
+    .mat-mdc-pseudo-checkbox-indeterminate {
+      background-color: green !important;
+      border-color: #616b75 !important;
+    }
+
+    .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background, .mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background {
+      background-color: green !important;
+      border-color: #616b75 !important;
+    }
+
+    .mat-mdc-checkbox-inner-container {
+      background: #f3f3f3 !important;
+    }
+
+    .mat-mdc-checkbox-label {
+      font-size: 12px !important;
+    }
+
+    .mat-mdc-form-field {
+      .mat-mdc-form-field-textarea-control {
+        height: 25px!important;
+      }
+
+      .mat-mdc-form-field-infix {
+        border-top-width: 10px;
+        font-size: 12px;
+      }
+
+      &.mat-mdc-form-field-appearance-outline {
+        .mat-mdc-form-field-infix {
+          padding: 0.8em;
+        }
+
+        .mat-mdc-form-field-outline-start {
+          border-radius: 0px 4px 4px 0 !important;
+        }
+
+        .mat-mdc-form-field-outline {
+          background-color: #ffffff;
+          border-radius: 5px;
+        }
+
+        .mat-mdc-form-field-icon-suffix {
+          top: 6px;
+          left: 4px;
+        }
+
+        .mat-mdc-form-field-flex {
+          padding: 0 !important;
+        }
+
+        &.mat-mdc-focused.mat-warn .mat-mdc-form-field-outline-thick,
+        &.mat-mdc-form-field-invalid.mat-mdc-form-field-invalid .mat-mdc-form-field-outline-thick {
+          //color: #e0e0e0 !important;
+        }
+      }
+    }
+
+
+    .mdc-label {
+      font-size: smaller;
+    }
+
+    .mat-mdc-text-field-wrapper {
+      background-color: #ffffff!important;
+      border-radius: 5px;
+      height: 30px!important;
+    }
+
+    .mat-mdc-input-element {
+      font-size: 15px !important;
+      margin-bottom: -3px !important;
+    }
+
+    .mat-mdc-form-field-infix {
+      border: 14px !important;
+      padding: 3px !important;
+    }
+
+    .mat-mdc-form-field-flex {
+      height: 20px!important;
+    }
+
+    .mat-mdc-form-field-suffix {
+      position: absolute;
+      left: 0;
+      margin-top: -10px;
+      .mat-mdc-button-wrapper {
+        margin-left: -18px;
+      }
+    }
+
+    .mat-mdc-form-field-appearance-outline.mat-mdc-focused.mat-warn .mat-mdc-form-field-outline-thick,
+    .mat-mdc-form-field-appearance-outline.mat-mdc-form-field-invalid.mat-mdc-form-field-invalid .mat-mdc-form-field-outline-thick {
+      //color: #e0e0e0 !important;
+    }
+
+    .mat-mdc-form-field-label-wrapper {
+      margin-right: 8px;
+    }
+
+    .mat-mdc-menu-item-text {
+      font-family: 'Yekan'!important;
+    }
+
+    .mat-mdc-floating-label {
+      top: 12px !important;
+    }
+
+    .mat-mdc-mdc-form-field-subscript-wrapper {
+      display: none !important;
+    }
+
+    .mat-mdc-form-field-icon-suffix {
+      //margin-top: 10px;
+    }
+
+    .mat-mdc-button-wrapper {
+      margin-top: 3px;
+    }
+
+    .mdc-button__label {
+      font-size: small!important;
+    }
+  }
+}
+.tab-curve {
+}
+
+.tab-curve-left {
+}
+
+.tab-curve-right {
+}
+.colorFull.mat-mdc-form-field {
+  --mdc-outlined-text-field-outline-color: #c7c7c7;
+  --mdc-outlined-text-field-hover-outline-color: #c7c7c7;
+  --mdc-outlined-text-field-focus-outline-color: #c7c7c7;
+  --mdc-outlined-text-field-disabled-outline-color: #ddd;
+
+  --mdc-outlined-text-field-container-color: whitesmoke;
+}
+
+:host ::ng-deep .colorFull .mat-mdc-text-field-wrapper {
+  background-color: whitesmoke !important;
+  border-radius: 3px;
+}
+
+
+.mat-mdc-snack-bar-label .mdc-snackbar__label .error-snackbar {
+  background: #d97c86!important;
+  --mdc-snackbar-container-color: #d97c86!important;
+  font-family: 'Yekan' !important;
+  border-radius: 5px!important;
+}
+
+.mat-mdc-snack-bar-label.error-snackbar .mdc-snackbar__label  {
+  background: #d97c86!important;
+  --mdc-snackbar-container-color: #d97c86!important;
+  font-family: 'Yekan' !important;
+  border-radius: 5px!important;
+}
+.error-snackbar .mat-mdc-snack-bar-label .mdc-snackbar__label  {
+  background: #d97c86!important;
+  --mdc-snackbar-container-color: #d97c86!important;
+  font-family: 'Yekan' !important;
+  border-radius: 5px!important;
+}
+::ng-deep  .mat-mdc-snack-bar-container.error-snackbar .mat-mdc-snackbar-surface {
+  background-color: #d97c86 !important;
+  --mdc-snackbar-container-color: #d97c86 !important;
+}
+::ng-deep .error-snackbar.mat-mdc-snack-bar-container .mat-mdc-snackbar-surface {
+  background-color: #d97c86 !important;
+  --mdc-snackbar-container-color: #d97c86 !important;
+}
+::ng-deep  .mat-mdc-snack-bar-container .mat-mdc-snackbar-surface.error-snackbar{
+  background-color: #d97c86 !important;
+  --mdc-snackbar-container-color: #d97c86 !important;
+}
+.mdc-snackbar__surface.mat-mdc-snackbar-surface {
+  background-color: transparent !important;
+  --mdc-snackbar-container-color: transparent !important;
+  box-shadow: white!important;
+}
+
+.mat-mdc-snack-bar-label .mdc-snackbar__label .ok-snackbar {
+  background: #81b881!important;
+  font-family: 'Yekan' !important;
+  border-radius: 5px!important;
+}
+
+.mat-mdc-snack-bar-label.ok-snackbar .mdc-snackbar__label  {
+  background: #81b881!important;
+  font-family: 'Yekan' !important;
+  border-radius: 5px!important;
+}
+.ok-snackbar .mat-mdc-snack-bar-label .mdc-snackbar__label  {
+  background: #81b881!important;
+  font-family: 'Yekan' !important;
+  border-radius: 5px!important;
+}
+
+
+
+//رنگ اینپوت های بدون دیتا
+.mat-mdc-form-field:not(.mat-form-field-disabled) .mat-mdc-floating-label.mdc-floating-label {
+  color: #acacac;
+}
+
+/* ==== FIX نهایی برای textarea (اضافه کن انتهای فایل) ==== */
+//
+///* اجازه بده کلیکِ resize به خود textarea برسد */
+//:host ::ng-deep .mdc-text-field--textarea .mat-mdc-form-field-outline,
+//:host ::ng-deep .mdc-text-field--textarea .mat-mdc-form-field-outline-start,
+//:host ::ng-deep .mdc-text-field--textarea .mat-mdc-form-field-outline-end,
+//:host ::ng-deep .mdc-text-field--textarea .mat-mdc-floating-label {
+//  pointer-events: none !important;
+//}
+//
+///* مطمئن شو چیزی روی textarea قرار نمی‌گیرد */
+//:host ::ng-deep .mdc-text-field--textarea textarea.mdc-text-field__input {
+//  position: relative !important;
+//  z-index: 2 !important;
+//  resize: both;             /* اگر فقط عمودی می‌خواهی: vertical */
+//  min-height: 120px;        /* کمی بیشتر تا جای دستگیره داخل کادر باشد */
+//  padding-bottom: 12px;     /* فضای اضافه برای دستگیره در گوشه */
+//  box-sizing: border-box;
+//}
+//
+///* اگر کلاس عمومی input روی textarea اعمال شده، margin منفی را خنثی کن */
+//:host ::ng-deep .mdc-text-field--textarea .mat-mdc-input-element {
+//  margin-bottom: 0 !important;
+//}
+//
+///* هیچ لایه‌ای اطراف textarea، گوشه را قطع نکند */
+//:host ::ng-deep .mdc-text-field--textarea .mat-mdc-text-field-wrapper,
+//:host ::ng-deep .mdc-text-field--textarea .mat-mdc-form-field-flex {
+//  overflow: visible !important;
+//}
+//
+///* اگر suffix داری، مزاحم گوشه‌ی چپ/راست پایین نشود */
+//:host ::ng-deep .mdc-text-field--textarea .mat-mdc-form-field-icon-suffix {
+//  position: static !important;
+//  margin: 0 !important;
+//  align-self: flex-start;
+//}
+
+::ng-deep .mat-mdc-select-panel .mat-mdc-option {
+  font-family: 'Yekan', sans-serif !important;
+}
+::ng-deep .mat-mdc-option {
+  font-family: 'Yekan' !important;
+}
+
+::ng-deep .mat-mdc-option .mdc-list-item {
+  font-family: 'Yekan' !important;
+}
+
+::ng-deep .mdc-list-item__primary-text {
+  font-family: 'Yekan' !important;
+}
+
+
+/* تیک/چک‌مارک گزینه‌های mat-select را مخفی کن */
+:host ::ng-deep .action-bar__select .mat-mdc-option .mat-mdc-option-checkmark,
+:host ::ng-deep .action-bar__select .mat-mdc-option .mat-mdc-option-pseudo-checkbox,
+:host ::ng-deep .action-bar__select .mat-mdc-option .mat-pseudo-checkbox,
+:host ::ng-deep .action-bar__select .mat-mdc-option .mat-mdc-option-state,
+:host ::ng-deep .action-bar__select .mat-mdc-option .mdc-list-item__end {
+  display: none !important;
+}
+
+:host ::ng-deep .action-bar__select .mat-mdc-option {
+  padding-inline-start: 16px;
+}
+
+
+:host ::ng-deep .mat-pseudo-checkbox .mat-mdc-option-pseudo-checkbox .mat-pseudo-checkbox-checked  {
+  display: none!important;
+}
+
+:host ::ng-deep .mat-mdc-menu-item-text {
+  font-family: 'yekan'!important;
+}
+::ng-deep .mat-mdc-menu-item-text {
+  font-family: 'yekan'!important;
+}
+:host .mat-mdc-menu-item-text {
+  font-family: 'yekan'!important;
+}
+
+
+
+/* افزایش عرض دراپ‌دان */
+//.cdk-overlay-pane {
+//  width: 278px !important;
+//}
+//
+///* افزایش عرض آیتم‌های داخل دراپ‌دان */
+//.cdk-overlay-pane .mat-select-panel .mat-option {
+//  width: 100% !important; /* یا عرض دلخواه خود را وارد کنید */
+//}
+
+
+/* افزایش عرض دراپ‌دان */
+//:host .cdk-overlay-pane {
+//  width: 278px !important;
+//}
+//
+///* افزایش عرض آیتم‌های داخل دراپ‌دان */
+//:host  .cdk-overlay-pane .mat-select-panel .mat-option {
+//  width: 100% !important; /* یا عرض دلخواه خود را وارد کنید */
+//}
+//
+///* افزایش عرض دراپ‌دان */
+//:host ::ng-deep .cdk-overlay-pane {
+//  width: 278px !important;
+//}
+//
+///* افزایش عرض آیتم‌های داخل دراپ‌دان */
+//:host ::ng-deep .cdk-overlay-pane .mat-select-panel .mat-option {
+//  width: 100% !important; /* یا عرض دلخواه خود را وارد کنید */
+//}
+///* برای افزایش عرض خود دراپ‌دان */
+//.cdk-overlay-pane {
+//  width: 300px !important; /* عرض دلخواه خود را وارد کنید */
+//}
+//
+///* برای بزرگ کردن عرض آیتم‌ها در داخل دراپ‌دان */
+//.mat-select-panel .mat-option {
+//  width: 100% !important; /* یا عرض دلخواه خود را وارد کنید */
+//}
+//::ng-deep .mat-select-panel .mat-option {
+//  width: 100% !important; /* یا عرض دلخواه خود را وارد کنید */
+//}
+//.mat-select .mat-select-panel {
+//  width: 300px !important;
+//}
+//
+//::ng-deep .mat-select-panel .mat-option {
+//  width: 300px !important; /* عرض دلخواه خود را وارد کنید */
+//}
+//

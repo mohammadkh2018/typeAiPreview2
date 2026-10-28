@@ -1,0 +1,16 @@
+::ng-deep .mat-dialog-container {
+  overflow: hidden;
+  padding-top: 15px;
+  margin-bottom: 100px;
+}
+
+:host ::ng-deep .mat-dialog-content {
+  overflow-y: hidden;
+}
+
+.close {
+  color: darkred;
+  font-size: 22px;
+  font-weight: lighter;
+  cursor: pointer;
+}

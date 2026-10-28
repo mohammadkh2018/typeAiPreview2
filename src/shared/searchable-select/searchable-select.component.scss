@@ -1,0 +1,46 @@
+:host ::ng-deep .mat-mdc-select-panel .sticky-search-option {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: white;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+:host ::ng-deep .select-with-search-panel {
+  padding-top: 0 !important;
+  overflow: visible !important;
+}
+
+:host ::ng-deep .mat-mdc-select-panel .search-option {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: #fff;
+  cursor: default;
+  pointer-events: auto !important;
+  border-bottom: 1px solid #eee;
+  padding: 6px 8px !important;
+}
+
+:host ::ng-deep .mat-mdc-select-panel .search-option .mdc-list-item__primary-text {
+  pointer-events: none !important;
+  width: 100%!important;
+}
+
+:host ::ng-deep .mat-mdc-select-panel .search-option .search-input {
+  pointer-events: auto !important;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  font: inherit;
+  background: #fff;
+  z-index: 4;
+  width: 100%!important;
+}
+
+:host ::ng-deep .mat-mdc-select-panel .search-option .search-input:focus {
+  border-color: #3f51b5;
+}

@@ -1,0 +1,10 @@
+html , body , mat-dialog-container{
+  padding: 0;
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+}
+mat-dialog-container {
+  padding: 0;
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+}

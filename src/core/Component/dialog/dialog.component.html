@@ -1,0 +1,12 @@
+ <div style="padding: 10px;margin: 0;overflow-x: hidden;overflow-y: hidden"
+      [ngClass]="langService.Defualt_Lang_Data === 'en' || langService.Defualt_Lang_Data === 'ar' ? 'fsEn' : 'fsFa'">
+  <h1 [dir]="data.Dir">{{data.Title}}</h1>
+  <div mat-dialog-content [dir]="data.Dir">
+    <p >{{data.Question}}</p>
+  </div>
+  <div mat-dialog-actions >
+    <mat-slide-toggle [(ngModel)]="isCheck" *ngIf="data.Ischeck" style=" font-family: 'Yekan'!important;">{{data.CheckTitle}}</mat-slide-toggle>
+    <button [dir]="data.Dir" mat-raised-button color="warn" (click)="onDismiss()">{{data.NotOk_Btn}}</button>
+    <button [dir]="data.Dir" mat-raised-button style="background: green;color: white;margin-left: 5px" (click)="onConfirm()" [mat-dialog-close]="data.animal" cdkFocusInitial>{{data.Ok_Btn}}</button>
+  </div>
+ </div>

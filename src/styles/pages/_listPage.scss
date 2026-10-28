@@ -1,0 +1,214 @@
+@import "../abstracts/variables";
+
+$search-box-gap: 10px;
+$search-box-tab-width: 99%;
+$search-box-tab-min-height: 40px;
+$search-box-tab-height: 10px;
+$search-box-input-width: 100%;
+
+$color-bg-muted: whitesmoke;
+
+$tablet: 1024px;
+$mobile: 768px;
+
+.search-box {
+  width: 100%;
+  direction: rtl;
+  position: relative;
+
+  &__tab {
+    width: $search-box-tab-width !important;
+    min-height: $search-box-tab-min-height;
+    height: $search-box-tab-height;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    align-items: center;
+    background: $search-box-bg;
+    box-shadow: none;
+    display: flex;
+    justify-content: center;
+    gap: $search-box-gap;
+    box-sizing: border-box;
+    margin: 0 auto;
+
+    &:hover {
+      box-shadow: none;
+      cursor: context-menu;
+    }
+
+    &--double-line {
+      min-height: 80px;
+    }
+  }
+
+  &__nonTab {
+    width: $search-box-tab-width !important;
+    min-height: $search-box-tab-min-height;
+    height: $search-box-tab-height;
+    background: $search-box-bg;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0 10px;
+
+    &--input {
+      width: $search-box-input-width;
+      margin-top: 5px;
+    }
+  }
+
+  &__input {
+    width: $search-box-input-width;
+    margin-top: 22px;
+
+    &--top {
+      width: $search-box-input-width;
+      margin-top: 20px;
+    }
+  }
+
+  &__top {
+    margin-top: 0!important;
+    gap: $search-box-gap;
+  }
+
+  &__bottom {
+    gap: $search-box-gap;
+    margin-top: -53px !important;
+  }
+}
+
+.info-bar {
+  background-color: rgb(240, 255, 244);
+  border: 1px solid rgb(201, 235, 209);
+  width: $search-box-tab-width;
+  margin: 0 auto;
+  padding: 0 3px 3px 2px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  border-radius: 6px;
+}
+
+.action-bar {
+  background-color: $search-box-bg;
+  border: 1px solid #bcd7ff;
+  width: $search-box-tab-width;
+  margin: 0 auto;
+  height: 45px;
+  padding: 0 3px 3px 2px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  border-radius: 6px;
+
+  &__button {
+    border-radius: 5px;
+    border: #ff7f04 1px solid !important;
+    background: linear-gradient(180deg, rgba(252, 194, 106, 1) 39%, rgba(242, 152, 34, 1) 63%);
+    margin: 0 3px;
+    height: 30px!important;
+    transition: background 0.3s, border 0.3s;
+    line-height: 10px!important;
+    padding: 2px 10px;
+
+    &:hover {
+      background: linear-gradient(180deg, rgba(255, 180, 66, 1) 39%, rgba(237, 134, 0, 1) 63%);
+      cursor: pointer;
+    }
+  }
+
+  &__help-button {
+    border-radius: 5px;
+    border: #ffd715 1px solid !important;
+    background: linear-gradient(180deg, rgb(240 255 98) 48%, rgb(241 241 0) 60%);
+    margin: 0 3px;
+    height: 30px;
+    transition: background 0.3s, border 0.3s;
+    line-height: 10px;
+    padding: 2px 10px;
+
+    &:hover {
+      background: linear-gradient(180deg, rgb(228 245 69) 48%, rgb(227 227 16) 60%);
+      cursor: pointer;
+    }
+  }
+
+  &__excel-button {
+    border-radius: 5px;
+    border: #77da74 1px solid !important;
+    background: linear-gradient(180deg, rgb(150 231 94) 39%, rgb(11 205 3) 63%);
+    margin: 0 3px;
+    height: 30px;
+    transition: background 0.3s, border 0.3s;
+    line-height: 10px;
+    padding: 2px 10px;
+
+    &:hover {
+      background: linear-gradient(180deg, rgb(130, 211, 73) 39%, rgb(11, 185, 4) 63%);
+      cursor: pointer;
+    }
+  }
+
+  &__status {
+    background: $color-bg-muted;
+    border-radius: 5px;
+    padding: 2px 5px;
+    margin-right: 6px;
+    cursor: context-menu;
+
+    .cdk-overlay-pane {
+      width: 278px !important;
+    }
+  }
+
+  &__checkbox {
+    white-space: nowrap;
+    margin-left: 20px;
+  }
+
+  &__checkboxOffline {
+    width: 116px;
+  }
+
+  &__input-count {
+    margin: -2px 0px 2px 2px;
+    text-align: center;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 5px 0 !important;
+    border-radius: 5px;
+  }
+
+  &__select {
+    height: 35px !important;
+    line-height: 30px !important;
+    padding: 0 8px 5px 8px !important;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 0 2px;
+    .mat-select-arrow {
+      margin-top: -10px;
+    }
+  }
+}
+
+@media (max-width: $tablet) {
+  html, body {
+    width: auto !important;
+    min-width: 1024px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+  }
+  .container {
+    min-width: 1024px !important;
+  }
+}
+@media (max-width: $mobile) {
+  html, body {
+    min-width: 768px !important;
+  }
+  .container {
+    min-width: 768px !important;
+  }
+}
+

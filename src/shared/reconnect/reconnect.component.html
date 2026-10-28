@@ -1,0 +1,21 @@
+<div class="MyContainer">
+  <div>
+    <mat-icon  fxFlexAlign="center center" style="font-size:60px;color:#c31f1f; margin-right: 30px; ">report_off</mat-icon>
+  </div>
+  <div>
+    <span style="font-size:15px;">سرویس دهنده در دسترس نمیباشد </span>
+  </div>
+  <mat-divider></mat-divider>
+  <div fxFlexAlign="center center">
+
+    <span style="font-size: 40px; margin: 30px auto"> {{Counter}}</span>
+    <mat-progress-bar [value]="Counter" style="color:#c31f1f"></mat-progress-bar>
+
+  </div>
+  <div>
+    <br />
+    <span class="pointer" (click)="On_ReTry()" >
+          <mat-icon style="font-size:40px;">replay</mat-icon>
+        </span>
+  </div>
+</div>

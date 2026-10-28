@@ -1,0 +1,14 @@
+<div fxLayout="row" class="main" style="overflow-x: scroll;overflow-y: hidden;"
+     ngStyle.md="margin-top: -100px"
+     ngStyle.xl="margin-top: -300px"
+     ngStyle.sm="margin-top: -250px"
+     ngStyle.xs="margin-top: -300px">
+  <div>
+    <div *ngIf="!IsImagePdf;" [ngStyle]="{'margin-top':!IsImagePdf ? '120px':'0px'}" class="zoom" [innerHTML]="dataUrl | safeHtml" title="SamplePdf"
+         ngStyle.md="transform: scale(1.6);overflow-x: auto;top: -500%;"
+         ngStyle.xl="transform: scale(0.5);overflow-x: auto;"
+         ngStyle.sm="transform: scale(1);overflow-x: auto;"
+         ngStyle.xs="transform: scale(0.7);overflow-x: auto;width: 100vh;margin-left: -100px"></div>
+    <div id="pdfShow" style="height: 100vh" title="SamplePdf"></div>
+  </div>
+</div>

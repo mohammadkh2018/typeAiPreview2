@@ -1,0 +1,41 @@
+<mat-icon class="pointer" style="font-weight: bold" (click)="onDismiss()">close</mat-icon>
+<div mat-dialog-content [dir]="data.Dir">
+  <div fxLayout="row" fxLayout.xs="row">
+    <div fxFlex="100">
+      <mat-form-field style="width: 100%;">
+        <input [(ngModel)]="JsonOutput.search" matInput
+               [placeholder]="'برای جستجو تایپ کنید'"
+               [dir]="data.Dir"
+               #SearchInput
+        >
+      </mat-form-field>
+    </div>
+  </div>
+  <mat-icon *ngIf="Seraching" style="z-index: 100; position: absolute">
+    <mat-spinner diameter="20">
+    </mat-spinner>
+  </mat-icon>
+  <!--<div fxLayout="row" style="padding: 3px;text-align: center">-->
+    <!--<div fxFlex="10" class="column_tab">ردیف</div>-->
+    <!--<div fxFlex="35" class="column_tab">کدپرسنلی</div>-->
+    <!--<div fxFlex="35" class="column_tab">نام و نام خانوادگی</div>-->
+    <!--<div fxFlex="35" class="column_tab">مشخصات</div>-->
+  <!--</div>-->
+  <div
+    [ngStyle]="{'height':'calc(100vh - 200px)','overflow-y':'scroll'}"
+    (scroll)="ongridscroll($event)">
+    <div *ngFor="let item of rowData;let i = index" fxLayout="column"
+         style="margin-bottom: 5px; background: #e4f2ff" (click)="onConfirm(item.idSpecialUser2)" class="pointer">
+      <div fxLayout="row" style="padding: 3px; text-align: center; font-weight: normal!important;">
+        <div fxFlex="5"
+             style="background: white;border-radius: 20px;margin-left: 10px;width: 25px;height: 25px;margin-right: 10px;text-align: center;">
+          {{item.rownum}}
+        </div>
+        <div fxFlex="10" style="font-weight: normal!important;">{{item.idSpecialUser}}</div>
+        <div fxFlex="35" style="font-weight: normal!important;">{{item.myFamily}}</div>
+        <div fxFlex="35" style="font-weight: normal!important;">{{item.myInfo}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+

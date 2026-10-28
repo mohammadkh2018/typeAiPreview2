@@ -1,0 +1,187 @@
+<div class="pdf-container">
+    <!-- <ngx-extended-pdf-viewer *ngIf="pdfSrc" [src]="pdfSrc" (pagesLoaded)="onPagesLoaded($event)"
+        [useBrowserLocale]="true" [showToolbar]="false" [showSidebarButton]="false" [showFindButton]="false"
+        [showPagingButtons]="false" [showZoomButtons]="false" [showPresentationModeButton]="false"
+        [showOpenFileButton]="false" [showPrintButton]="false" [showDownloadButton]="false"
+        [showSecondaryToolbarButton]="false" [zoom]="'100'" height="100vh">
+    </ngx-extended-pdf-viewer> -->
+    <ngx-extended-pdf-viewer *ngIf="pdfSrc" [src]="pdfSrc" [(page)]="currentPageNumber"
+        (pagesLoaded)="onPagesLoaded($event)" [useBrowserLocale]="true" [showToolbar]="false"
+        [showSidebarButton]="false" [showFindButton]="false" [showPagingButtons]="false" [showZoomButtons]="false"
+        [showPresentationModeButton]="false" [showOpenFileButton]="false" [showPrintButton]="false"
+        [showDownloadButton]="false" [showSecondaryToolbarButton]="false" [zoom]="'100'" height="100vh">
+    </ngx-extended-pdf-viewer>
+
+    <div class="page-indicator">
+        <span> صفحه </span>
+        <input type="number" class="page-input" style="width: 30px !important; height: 8px !important;font-size: 12px;" [ngModel]="currentPageNumber" (keyup.enter)="goToPage($event)"
+            (blur)="goToPage($event)" min="1" [max]="totalPages" />
+        <span>از</span>
+        <span style="font-size: 12px;"> {{ totalPages }}</span>
+    </div>
+</div>
+
+
+
+<div class="signatureContainer" *ngIf="showsignaturesbyuser">
+    <div class="signatureBody">
+        <div class="signatureHeader">
+            <div class="signatureHeader__icon">
+                <i class="fa-solid fa-signature"></i>
+            </div>
+            <div class="signatureHeader__text">
+                <span class="signatureHeader__title">انتخاب امضا</span>
+                <span class="signatureHeader__subtitle">یک امضا را انتخاب کنید</span>
+            </div>
+            <button class="signatureHeader__close" (click)="closeSignatureModal()" title="بستن">✕</button>
+        </div>
+        <div class="signatureBoxesBody">
+            <button class="signatureBoxes" *ngFor="let sig of signatureList; let i = index"
+                (click)="onClickSignatureItem(sig)" [class.selected]="sig.selected">
+                <span class="signatureBoxes__label">{{ i + 1 }}</span>
+                <img *ngIf="sig.sign" [src]="'data:image/png;base64,' + sig.sign" />
+            </button>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isLoadingTemplate" class="loading-overlay">
+    <div class="loading-container">
+        <div class="spinner"></div>
+    </div>
+</div>
+
+<div *ngIf="showPreviewOptions">
+    <div class="previewOptionsContainer">
+        <div class="optionsBox">
+            <div class="selectedOlgo">
+                <!-- <input class="inputPreviewOptions" type="text" [(ngModel)]="selectedOlgo" disabled> -->
+                <!-- <span class="inputPreviewOptions">{{selectedOlgo}}</span> -->
+                <div class="olgoTitle"
+                    style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+                    {{selectedOlgo}}</div>
+            </div>
+            <div class="optionButtons">
+                <button class="opt-icon print" *ngIf="showPrint"  (click)="onClickPrint(0 , false)" title="چاپ">
+                    <i class="fas fa-print"></i>
+                </button>
+
+                <button class="opt-icon advanced"  *ngIf="showAdvancedPrint" (click)="onclcikAdvancedPrintButton()"
+                    title="چاپ پیشرفته">
+                    <span
+                        style="position: relative; display: inline-flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-print"></i>
+                        <span style="
+            position: absolute;
+            font-size: 0.7em;
+            font-weight: bold;
+            color: black !important;
+            font-style: normal;
+            line-height: 1;
+            margin-top: 2px;
+        ">$</span>
+                    </span>
+                </button>
+
+
+                <!-- <button class="opt-icon word" (click)="onClickPrint(3)" title="دریافت ورد">
+                    <i class="fa-solid fa-file-word"></i>
+                </button> -->
+
+                <button class="opt-icon export" *ngIf="showOutputFormat" (click)="onclickOutputFormat($event)"
+                    title="فرمت خروجی">
+                    <i class="fas fa-file-export" (click)="onClickShowOutputType()"></i>
+                </button>
+                <button class="opt-icon edit" *ngIf="showEditLetter" (click)="onclickEditLetter()" title="ویرایش نامه">
+                    <i class="fas fa-pen-to-square"></i>
+                </button>
+
+                <div class="ShowOutputType" *ngIf="ShowOutputType">
+                    <span class="output-btn tiff" (click)="onClickPrint(1)">Tiff</span>
+                    <span class="output-btn pdf" (click)="onClickPrint(0)">Pdf</span>
+                    <span class="output-btn gif" (click)="onClickPrint(2)">Gif</span>
+                    <span class="output-btn docX" (click)="onClickPrint(3)">docX</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="showPrintSettings">
+    <div class="settingsContainer">
+        <div class="bodyPrintSettings">
+            <div class="imageRow">
+
+                <div class="imageBox">
+                    <img src="https://test.ssmorvarid.ir/SubSystem/Dabir/Media/Images/Paperlesslogo.png"
+                        alt="Paperlesslogo">
+                </div>
+                <span
+                    style="margin-right: 30px; color: green; font-family: IRANSans, Tahoma, sans-serif !important; font-size: 20px;">
+                    <p>
+                        قبل از چاپ به محیط زیست فکر کنیم ...
+                    </p>
+                    <p>
+                        هر برگ کاغذ جزیی از درخت است
+                    </p>
+                </span>
+                <div class="closeBtnBody">
+                    <button class="closeButton" style="margin-top: 10px;" (click)="onClosePrintSettings()">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+            </div>
+            <div class="settingsRow">
+                <div class="settingRow row1"
+                    style="height: 15%; background-color: #d8ecd8; border: 1px solid #94cc9b; font-family: IRANSans, Tahoma, sans-serif !important;">
+                    <p style="color: green">
+                        تنظیمات چاپ
+                    </p>
+                    <span>
+                        <i class="fa fa-cog fa-2x" style="color: #ffc107;"></i>
+                    </span>
+                </div>
+                <div class="settingRow row2" style="background-color: white; border: 1px solid #9b9c9b;">
+                    <div class="col">
+                        <p>گیرندگان :</p>
+                        <div class="checkBoxRow" *ngFor="let recipient of recipientList; let i = index">
+                            <div class="checkBoxRecords">
+                                <input type="checkbox" [ngModel]="recipient.checked"
+                                    (change)="onRecipientChange(recipient, $event)" />
+                                <p>{{ recipient.name }} {{ recipient.organTitle }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <p>رونوشت ها :</p>
+                        <div class="checkBoxRow" *ngFor="let transcript of transcriptList; let i = index">
+                            <div class="checkBoxRecords">
+                                <input type="checkbox" [ngModel]="transcript.checked"
+                                    (change)="onTranscriptChange(transcript, $event)" />
+                                <p>{{ transcript.name }} {{ transcript.organTitle }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="settingRow row3" style="background-color: white; border: 1px solid #9b9c9b;">
+                    <div class="checkBoxRow" *ngFor="let option of checkBoxesList">
+                        <div class="checkBoxRecords">
+                            <input type="checkbox" [ngModel]="option.checked"
+                                (change)="onOptionChange(option, $event)" />
+                            <p>{{ option.title }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="settingRow row4"
+                    style="height: 15%;  background-color: #d8ecd8; border: 1px solid #b3d4b7;">
+                    <button class="btnPrev" style="font-family: IRANSans, Tahoma, sans-serif !important;"
+                        (click)="onClickAdvancedPrint()">
+                        نمایش
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
